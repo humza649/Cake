@@ -4,24 +4,27 @@ import { NavLink } from 'react-router-dom'
 export function Header(props) {
 
   const Navigation = (props) => {
+    const Items = props.items.map( (navObject,key) => {
+      if( navObject.link == '/') {
+        return (
+          <NavLink key={key} exact to={navObject.link}>
+            {navObject.name}
+          </NavLink>
+        )
+      }
+      else {
+        return(
+          <NavLink key={key} to={navObject.link}>
+            {navObject.name}
+          </NavLink>
+        )
+      }
+
+    } )
     return (
-      props.items.map
-        ((navObject, key) => {
-          if (navObject.link === '/') {
-            return (
-              <NavLink key={key} exact to={navObject.link}>
-                {navObject.name}
-              </NavLink>
-            )
-          }
-          else {
-            return (
-              <NavLink key={key} to={navObject.link}>
-                {navObject.name}
-              </NavLink>
-            )
-          }
-        })
+      <nav className="navigation">
+        {Items}
+      </nav>
     )
   }
 
