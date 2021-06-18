@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import '../styles/Cakes.css'
 
 export function Cakes(props) {
     const [cakes, setCakes] = useState()
@@ -37,29 +38,29 @@ export function Cakes(props) {
                 }
                 return(
                     <div className="single-cake">
-                        <h3>{item.title}</h3>
-                        <div className="cake-content" dangerouslySetInnerHTML={ createContent() }></div>
-                    </div>
-                )
-            })
-            return(
-                <div className="cakes-list">
-                    {Items}
+                    <h3>{item.title}</h3>
+                    <div className="cake-content" dangerouslySetInnerHTML={ createContent() }></div>
                 </div>
             )
-        }
-        else {
-            return( <p>Getting cakes ...</p>)
-        }
+        })
+        return(
+            <div className="cakes-list">
+                {Items}
+            </div>
+        )
     }
+    else {
+        return( <p>Getting cakes ...</p>)
+    }
+}
 
-    return (
-        <div className="cakes">
-            <h2>Cakes</h2>
-            <Counter />
-            <CakesList />
-        </div>
-    )
+return (
+    <div className="cakes">
+        <h2>Cakes</h2>
+        <Counter />
+        <CakesList />
+    </div>
+)
 }
 
 export default Cakes
